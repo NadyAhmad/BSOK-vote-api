@@ -40,7 +40,6 @@ func setupRouter() *gin.Engine {
 		voter_id := temp["voter_id"]
 		vote := temp["vote"]
 		inMemoryStore[voter_id] = vote
-		
 	})
 	return r
 }
