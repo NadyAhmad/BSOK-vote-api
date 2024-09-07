@@ -5,7 +5,7 @@ WORKDIR /build
 ADD . /build/
 RUN mkdir /tmp/build
 
-RUN export GARCH="$(uname -m)" && if [ "${GARCH}" = "x86_64" ]; then export GARCH="amd64"; fi && GOOS=linux GOARCH=${GARCH} CGO_ENABLED=0 go build -mod=vendor -o /tmp/build/api-server .
+RUN export GARCH="$(uname -m)" && if [ "${GARCH}" = "x86_64" ]; then export GARCH="amd64"; fi && GOOS=linux GOARCH=${GARCH} CGO_ENABLED=0 go build -mod=vendor -ldflags "-buildvcs=false" -o /tmp/build/api-server .
 
 FROM scratch
 
